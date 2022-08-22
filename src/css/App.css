@@ -13,6 +13,12 @@
   }
 }
 
+@media screen and (max-width: 300px) {
+  .articles--card_list {
+    font-size: small;
+  }
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
