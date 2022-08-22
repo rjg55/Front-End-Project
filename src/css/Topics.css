@@ -1,0 +1,40 @@
+.topics--card_list {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.topics--card {
+
+ border-bottom: none;
+}
+
+.topics--location_header {
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.topics--card--title {
+    text-transform: capitalize;
+    color: black;
+    border: 2px black solid;
+    border-bottom: none;
+
+    text-decoration-line: none;
+}
+
+.topics--card--desc {
+    color: black;
+    text-decoration: none;
+    text-decoration-line: none;
+    border: 2px black solid;
+    border-top: none;
+}
+
+Link {
+    text-decoration-line: none;
+}
+
+nav {
+    text-decoration-line: none;
+}
