@@ -24,7 +24,7 @@ const Articles = () => {
                             <h3 className="article--card--author">Author: {author}</h3>
                             <h3 className="article--card--topic">Topic: {topic}</h3>
                             <h3 className="article--card--created_at">Posted: {created_at.substring(11, 16)} on {created_at.substring(0,10)}</h3>
-                            <h3 className="article--card--votes">Votes: {votes}</h3>
+                            <h3 className="article--card--votes">Votes: {votes === 0 ? "Be the first to upvote this!": votes}</h3>
                         </li>
                     )
                 })}

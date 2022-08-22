@@ -13,13 +13,9 @@
   }
 }
 
-@media screen and (min-width: 600px) {
-  .App {
-    grid-template-columns: 25% 75%;
-    grid-template-rows: min-content auto;
-    grid-template-areas:
-      'header header'
-      'nav content';
+@media screen and (max-width: 300px) {
+  .articles--card_list {
+    font-size: small;
   }
 }
 
