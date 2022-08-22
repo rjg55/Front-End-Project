@@ -1,0 +1,48 @@
+.articles--card_list {
+    padding-left: 0%;
+}
+
+.article--card {
+    display: grid;
+    grid-template-areas:
+    "title title"
+    "author topic"
+    "created_at created_at"
+    "votes votes";
+    list-style-type: none;
+    border: 2px black solid;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+
+}
+
+.article--card--title {
+    grid-area: title;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.article--card--author {
+    grid-area: author;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.article--card--topic {
+    grid-area: topic;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.article--card--created_at {
+    grid-area: created_at;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.article--card--votes {
+    grid-area: votes;
+    margin-top: auto;
+    margin-bottom: auto;
+}
