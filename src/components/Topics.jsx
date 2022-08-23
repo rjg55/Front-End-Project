@@ -21,7 +21,7 @@ const Topics = () => {
                     return (
                         <Link to={`/topics/${slug}`} key={slug} className="topics--card">
                             <h2 className="topics--card--title">{slug}</h2>
-                            <p className="topics--card--desc">{description}</p>
+                            {/* <p className="topics--card--desc">{description}</p> */}
                            
                         </Link>
                     )

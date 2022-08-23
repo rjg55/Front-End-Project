@@ -6,7 +6,6 @@ const Articles = () => {
 
     const [articles, setArticles] = useState([])
     const {topic_id} = useParams();
-    console.log(topic_id);
 
     useEffect(() => {
     if (!topic_id) {

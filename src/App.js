@@ -3,6 +3,7 @@ import "./css/App.css";
 import "./css/Home.css";
 import "./css/Articles.css";
 import "./css/Topics.css";
+import "./css/Title.css";
 import Articles from "./components/Articles";
 import Home from "./components/Home";
 import Nav from "./components/Nav";
