@@ -33,3 +33,9 @@ export const patchVotesById = (article_id, vote_delta) => {
     inc_votes: vote_delta,
   });
 };
+
+export const fetchUsers = () => {
+  return axios.get("https://wtan.herokuapp.com/api/users").then((res) => {
+    return res;
+  });
+};
