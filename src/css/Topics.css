@@ -1,0 +1,53 @@
+.topics--card_list {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+        flex-flow: row wrap;
+        justify-content:centre;
+}
+
+.topics--card {
+    align-self: center;
+    text-align: center;
+    width: 300px;
+    height: 100px;
+    padding: 1px;
+    box-sizing: border-box;
+    border: 2px black solid;
+    border-radius: 15px 50px 30px;
+}
+
+.topics--location_header {
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.topics--card--title {
+    text-transform: capitalize;
+    color: black;
+    text-decoration-line: none;
+}
+
+.topics--card--desc {
+    color: black;
+    text-decoration: none;
+    text-decoration-line: none;
+    border: 2px black solid;
+    border-top: none;
+}
+
+Link {
+    text-decoration-line: none;
+}
+
+nav {
+    text-decoration-line: none;
+}
+
+@media screen and (max-width: 920px){
+    .topics--card_list {
+        flex-direction: column;
+    }
+}
+

@@ -1,20 +1,27 @@
 import { useEffect, useState } from "react"
-import { fetchArticles } from "../api functions/api"
+import { useParams } from "react-router-dom"
+import { fetchArticles, fetchArticlesByTopic } from "../api functions/api"
 
 const Articles = () => {
 
     const [articles, setArticles] = useState([])
+    const {topic_id} = useParams();
 
     useEffect(() => {
-        fetchArticles().then((articlesFromApi) => {
-            setArticles(articlesFromApi.data.articles)
-        })
-    }, [])
+    if (!topic_id) {
+            fetchArticles().then((articlesFromApi) => {
+                setArticles(articlesFromApi.data.articles)
+            })
+        } else {
+            fetchArticlesByTopic(topic_id).then((articlesByTopicFromApi) => {
+                setArticles(articlesByTopicFromApi.data.articles)
+            })
+        }
+    }, [topic_id])
 
 
     return (
         <>
-        <h1>ARTICLES</h1>
         <section>
             <ul className="articles--card_list">
                 {articles.map(({article_id, title, author, topic, created_at, votes}) => {

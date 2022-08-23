@@ -1,0 +1,12 @@
+.title--body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title--title {
+    background-color: #FFECD1;
+    text-align: center;
+    color: #001524;
+    width: 100%;
+}
