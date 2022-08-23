@@ -4,11 +4,13 @@ import "./css/Home.css";
 import "./css/Articles.css";
 import "./css/Topics.css";
 import "./css/Title.css";
+import "./css/ArticleSingle.css";
 import Articles from "./components/Articles";
 import Home from "./components/Home";
 import Nav from "./components/Nav";
 import Title from "./components/Title";
 import Topics from "./components/Topics";
+import ArticleSingle from "./components/ArticleSingle";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           <Route path="/articles" element={<Articles />} />
           <Route path="/topics" element={<Topics />} />
           <Route path="/topics/:topic_id" element={<Articles />} />
+          <Route path="/articles/:article_id" element={<ArticleSingle />} />
         </Routes>
       </div>
     </BrowserRouter>

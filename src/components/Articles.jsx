@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { fetchArticles, fetchArticlesByTopic } from "../api functions/api"
 
 const Articles = () => {
@@ -19,6 +19,7 @@ const Articles = () => {
         }
     }, [topic_id])
 
+    console.log(topic_id);
 
     return (
         <>
@@ -30,8 +31,9 @@ const Articles = () => {
                             <h3 className="article--card--title">{title}</h3>
                             <h3 className="article--card--author">Author: {author}</h3>
                             <h3 className="article--card--topic">Topic: {topic}</h3>
-                            <h3 className="article--card--created_at">Posted: {created_at.substring(11, 16)} on {created_at.substring(0,10)}</h3>
+                            <h3 className="article--card--created_at">Posted: {created_at.substring(0,10)}</h3>
                             <h3 className="article--card--votes">Votes: {votes === 0 ? "Be the first to upvote this!": votes}</h3>
+                            <Link to={`/articles/${article_id}`}><button className="article--card--button">View</button></Link>
                         </li>
                     )
                 })}
