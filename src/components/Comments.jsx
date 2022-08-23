@@ -4,6 +4,12 @@ import { fetchCommentsByArticle } from "../api functions/api"
 const Comments = ({article_id}) => {
 
     const [comments, setComments] = useState([])
+    const [newComment, setNewComment] = useState("")
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        
+    }
 
     useEffect(() => {
         fetchCommentsByArticle(article_id).then((commentsFromApi) => {
@@ -14,6 +20,11 @@ const Comments = ({article_id}) => {
     return (
         <>
         <section className="comments--section">
+            <form action="post" onSubmit={handleSubmit}className="comment--form">
+                <label htmlFor="comment">Add a comment</label>
+                <textarea id="comment" placeholder="Start writing here..." ></textarea>
+                <input type="submit" value="Submit"/>
+            </form>
             <ul className="comments--list">
                 {comments.map((comment) => {
                     return (
