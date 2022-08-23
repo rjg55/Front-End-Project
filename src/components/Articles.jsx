@@ -19,8 +19,6 @@ const Articles = () => {
         }
     }, [topic_id])
 
-    console.log(topic_id);
-
     return (
         <>
         <section>

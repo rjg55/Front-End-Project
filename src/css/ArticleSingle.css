@@ -3,3 +3,22 @@
     flex-flow: column wrap;
     padding: 5%;
 }
+
+.article--votes {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.votes--error_hide {
+    display: none;
+}
+
+.votes--error_show {
+    display: block;
+    flex-flow: row wrap;
+}

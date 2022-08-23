@@ -1,0 +1,12 @@
+.user--list {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-around;
+}
+
+.user_card--img {
+   height: 100px;
+}

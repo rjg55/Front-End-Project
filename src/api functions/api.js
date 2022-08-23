@@ -27,3 +27,15 @@ export const fetchArticlesByTopic = (topic) => {
       return res;
     });
 };
+
+export const patchVotesById = (article_id, vote_delta) => {
+  return axios.patch(`https://wtan.herokuapp.com/api/articles/${article_id}`, {
+    inc_votes: vote_delta,
+  });
+};
+
+export const fetchUsers = () => {
+  return axios.get("https://wtan.herokuapp.com/api/users").then((res) => {
+    return res;
+  });
+};
