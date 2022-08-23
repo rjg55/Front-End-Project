@@ -1,0 +1,5 @@
+.article--info {
+    display: flex;
+    flex-flow: column wrap;
+    padding: 5%;
+}

@@ -8,7 +8,7 @@
     "title title"
     "author topic"
     "created_at created_at"
-    "votes votes";
+    "votes button";
     list-style-type: none;
     border: 2px black solid;
     margin-bottom: 5px;
@@ -45,4 +45,8 @@
     grid-area: votes;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.article--card--button {
+    grid-area: button;
 }
