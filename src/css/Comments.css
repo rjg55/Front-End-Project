@@ -1,0 +1,23 @@
+.comment--card {
+    display: grid;
+    grid-template-areas:
+    "author date"
+    "body body"
+    "votes delete";
+}
+
+.comment--card--author {
+    grid-area: author;
+}
+
+.comment--card--created_at {
+    grid-area: date;
+}
+
+.comment--card--body {
+    grid-area: body;
+}
+
+.comment--card--votes {
+    grid-area: votes;
+}

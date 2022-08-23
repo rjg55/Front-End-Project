@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { fetchArticlesById, patchVotesById } from "../api functions/api";
+import Comments from "./Comments";
 
 const ArticleSingle = () => {
 
@@ -49,6 +50,7 @@ const ArticleSingle = () => {
             <p className="article--comment_count">Comments: {article.comment_count}</p>
 
         </div>
+        <Comments article_id={article_id}/>
         </>
     )
 }
