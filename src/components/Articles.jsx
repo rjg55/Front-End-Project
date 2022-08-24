@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useSearchParams } from "react-router-dom"
 import { fetchArticles, fetchArticlesByTopic } from "../api functions/api"
 
 const Articles = () => {
 
     const [articles, setArticles] = useState([])
+    const [param, setParam] = useParams()
     const {topic_id} = useParams();
+    const [searchParams, setSearchParams] = useSearchParams()
+
 
     useEffect(() => {
     if (!topic_id) {
-            fetchArticles().then((articlesFromApi) => {
+            fetchArticles(searchParams).then((articlesFromApi) => {
                 setArticles(articlesFromApi.data.articles)
             })
         } else {
@@ -17,10 +20,30 @@ const Articles = () => {
                 setArticles(articlesByTopicFromApi.data.articles)
             })
         }
-    }, [topic_id])
+    }, [topic_id, searchParams])
+
+    function handleClick(e) {
+        e.preventDefault();
+        let params = e.target.value;
+        setSearchParams('sortby')
+        setParam('created_at')
+        }
+
+// use axios params feature to input sortby&query into api request
+// use useSearchParams to update the URL for better UX
+// then pass on the queries in the url to the fetch request
+// update useEffect to re-render when the sorted/ordered articles come back
 
     return (
         <>
+        <section className="articles--sort">
+            <p className="articles--sort--title">Sort by:</p>
+            <button onClick={handleClick} className="articles--sort--date" value='created_at'>Date</button>
+            <button className="articles--sort--comments">Comments</button>
+            <button className="articles--sort--votes">Votes</button>
+            <button onClick={handleClick}className="articles--sort--asc" value='asc'>ASC</button>
+            <button className="articles--sort--desc">DESC</button>
+        </section>
         <section>
             <ul className="articles--card_list">
                 {articles.map(({article_id, title, author, topic, created_at, votes}) => {
