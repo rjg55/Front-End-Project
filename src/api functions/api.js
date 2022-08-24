@@ -47,3 +47,14 @@ export const fetchCommentsByArticle = (article_id) => {
       return response;
     });
 };
+
+export const postCommentByArticle = (article_id, author, comment_body) => {
+  return axios
+    .post(`https://wtan.herokuapp.com/api/articles/${article_id}/comments`, {
+      username: author,
+      body: comment_body,
+    })
+    .then((res) => {
+      return res;
+    });
+};
