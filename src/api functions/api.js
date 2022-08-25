@@ -62,3 +62,11 @@ export const postCommentByArticle = (article_id, author, comment_body) => {
       return res;
     });
 };
+
+export const deleteCommentByID = (comment_id) => {
+  return axios
+    .delete(`https://wtan.herokuapp.com/api/comments/${comment_id}`)
+    .then((res) => {
+      return res;
+    });
+};
