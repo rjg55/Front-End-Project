@@ -7,7 +7,7 @@
     grid-template-areas:
     "title title"
     "author topic"
-    "created_at created_at"
+    "created_at comments"
     "votes button";
     list-style-type: none;
     border: 2px black solid;
@@ -37,6 +37,12 @@
 
 .article--card--created_at {
     grid-area: created_at;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.article--card--comments {
+    grid-area: comments;
     margin-top: auto;
     margin-bottom: auto;
 }

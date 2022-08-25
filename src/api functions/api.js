@@ -1,9 +1,13 @@
 import axios from "axios";
 
-export const fetchArticles = () => {
-  return axios.get("https://wtan.herokuapp.com/api/articles").then((res) => {
-    return res;
-  });
+export const fetchArticles = (sortby, order) => {
+  return axios
+    .get(`https://wtan.herokuapp.com/api/articles`, {
+      params: { sortby, order },
+    })
+    .then((res) => {
+      return res;
+    });
 };
 
 export const fetchArticlesById = (article_id) => {
