@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchArticles = (sortby, order) => {
   return axios
     .get(`https://wtan.herokuapp.com/api/articles`, {
-      params: { sort_by: sortby, order },
+      params: { sortby, order },
     })
     .then((res) => {
       return res;

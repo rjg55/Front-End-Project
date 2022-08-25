@@ -10,20 +10,23 @@ const Articles = () => {
     const [sortby, setSortby] = useState('created_at')
     const [order, setOrder] = useState('desc')
 
-    let sorted = searchParams.get('sortby')
-    let ordered = searchParams.get('order')
+    
     
     useEffect(() => {
+        let sorted = searchParams.get('sortby')
+        let ordered = searchParams.get('order')
+        console.log(sorted, ordered);
         if (!topic_id) {
             fetchArticles(sorted, ordered).then((articlesFromApi) => {
                 setArticles(articlesFromApi.data.articles)
+
             })
         } else {
             fetchArticlesByTopic(topic_id).then((articlesByTopicFromApi) => {
                 setArticles(articlesByTopicFromApi.data.articles)
             })
         }
-    }, [topic_id, sorted, ordered])
+    }, [topic_id, searchParams])
     
     function handleSortOnClick(e) {
         setSearchParams({sortby: e.target.value, order: order}, {replace: true})
@@ -31,7 +34,7 @@ const Articles = () => {
     }
     
     function handleOrderOnClick(e) {
-        setSearchParams({sortby: sortby, order: e.target.value}, {replace: true})
+        setSearchParams({sortby: sortby, order: e.target.value},{replace: true})
         setOrder(e.target.value)
     }
 
