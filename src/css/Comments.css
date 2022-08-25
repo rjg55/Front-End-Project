@@ -22,7 +22,20 @@
     grid-area: votes;
 }
 
+.comment--card--delete {
+    grid-area: delete;
+    margin: auto;
+}
+
 .comment--form {
     display: flex;
     flex-flow: column wrap;
+}
+
+.delete--hide {
+    display: none;
+}
+
+.delete--show {
+    display: block
 }

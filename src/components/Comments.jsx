@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import { fetchCommentsByArticle, postCommentByArticle } from "../api functions/api"
+import { deleteCommentByID, fetchCommentsByArticle, postCommentByArticle } from "../api functions/api"
 import { UserContext } from "../context/User"
 
 const Comments = ({article_id}) => {
@@ -9,12 +9,28 @@ const Comments = ({article_id}) => {
     const [newComment, setNewComment] = useState("")
     const [refreshComments, setRefreshComments] = useState(false)
     const [isLoading, setIsLoading] = useState(true);
+    const [wrongUser, setWrongUser] = useState(false)
 
 
     function handleSubmit(e) {
         e.preventDefault();
         postCommentByArticle(article_id, loggedInUser.username, newComment).then(() => {setNewComment('')}).catch((err) => {console.log(err);})
         setRefreshComments(true)
+    }
+
+    function handleDelete(comment_id, author, e) {
+        if (loggedInUser.username === author) {
+            setWrongUser(false);
+            deleteCommentByID(comment_id).then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+            setRefreshComments(true)
+        } else {
+            setWrongUser(true)
+        }
     }
 
     useEffect(() => {
@@ -31,7 +47,11 @@ const Comments = ({article_id}) => {
                 <p className="comment--card--author">{comment.author}</p>
                 <p className="comment--card--created_at">{comment.created_at}</p>
                 <p className="comment--card--body">{comment.body}</p>
-                <p className="comment--card--votes">{comment.votes}</p>
+                <p className="comment--card--votes">Votes: {comment.votes}</p>
+                <div className="comment--card--delete">
+                 <button onClick={(e) => {handleDelete(comment.comment_id, comment.author, e)}}>Delete</button>
+                <p className={wrongUser === false ? 'delete--hide' : 'delete--show'}>{comment.author} can only delete this!</p>
+                </div>
             </li>
         )
     }) 

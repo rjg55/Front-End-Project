@@ -15,7 +15,6 @@ const Articles = () => {
     useEffect(() => {
         let sorted = searchParams.get('sortby')
         let ordered = searchParams.get('order')
-        console.log(sorted, ordered);
         if (!topic_id) {
             fetchArticles(sorted, ordered).then((articlesFromApi) => {
                 setArticles(articlesFromApi.data.articles)
