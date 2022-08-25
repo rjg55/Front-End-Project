@@ -2,20 +2,26 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { fetchArticlesById, patchVotesById } from "../api functions/api";
 import Comments from "./Comments";
+import ErrorComponent from "./ErrorComponent";
 
 const ArticleSingle = () => {
 
     const [article, setArticle] = useState({})
     const [optimisticVotes, setOptimisticVotes] = useState(0);
     const [voteError, setVoteError] = useState(false);
+    const [error, setError] = useState(null);
 
     let {pathname} = useLocation();
     const regex = /\d+$/gi;
     const article_id = Number(pathname.match(regex))
 
     useEffect(()=>{
-        fetchArticlesById(article_id).then((articleFromApiById) => {
+        fetchArticlesById(article_id)
+        .then((articleFromApiById) => {
             setArticle(articleFromApiById.data.article)
+        })
+        .catch((err) => {
+            setError({err})
         })
     }, [optimisticVotes])
 
@@ -31,6 +37,10 @@ const ArticleSingle = () => {
                 setVoteError(true);
                 return currOptimisticVotes - 1;
             })})
+    }
+
+    if (error) {
+        return <ErrorComponent status={error.err.response.status} message={error.err.response.data.msg}/>
     }
 
     return (
