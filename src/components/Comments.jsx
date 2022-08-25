@@ -15,15 +15,14 @@ const Comments = ({article_id}) => {
     function handleSubmit(e) {
         e.preventDefault();
         postCommentByArticle(article_id, loggedInUser.username, newComment).then(() => {setNewComment('')}).catch((err) => {console.log(err);})
+        setWrongUser(false)
         setRefreshComments(true)
     }
 
     function handleDelete(comment_id, author, e) {
         if (loggedInUser.username === author) {
             setWrongUser(false);
-            deleteCommentByID(comment_id).then((res) => {
-                console.log(res)
-            })
+            deleteCommentByID(comment_id)
             .catch((err) => {
                 console.log(err);
             })
@@ -50,7 +49,7 @@ const Comments = ({article_id}) => {
                 <p className="comment--card--votes">Votes: {comment.votes}</p>
                 <div className="comment--card--delete">
                  <button onClick={(e) => {handleDelete(comment.comment_id, comment.author, e)}}>Delete</button>
-                <p className={wrongUser === false ? 'delete--hide' : 'delete--show'}>{comment.author} can only delete this!</p>
+                <p className={wrongUser === false ? 'delete--hide' : 'delete--show'}>Current user not authorised to delete</p>
                 </div>
             </li>
         )
