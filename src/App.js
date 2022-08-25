@@ -16,6 +16,7 @@ import ArticleSingle from "./components/ArticleSingle";
 import { useState } from "react";
 import { UserContext } from "./context/User";
 import ChangeUser from "./components/ChangeUser";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
@@ -39,6 +40,7 @@ function App() {
             <Route path="/articles/:article_id" element={<ArticleSingle />} />
             <Route path="/users" element={<ChangeUser />} />
             <Route path="/articles?:query" element={<Home />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
       </UserContext.Provider>

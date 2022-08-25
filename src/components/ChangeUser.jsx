@@ -1,18 +1,27 @@
 import { useState, useEffect, useContext } from "react";
 import { fetchUsers } from "../api functions/api";
 import { UserContext } from "../context/User";
+import ErrorComponent from "./ErrorComponent";
 
 const ChangeUser = () => {
 
     const [users, setUsers] = useState([])
     const {setLoggedInUser} = useContext(UserContext)
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         fetchUsers().then((usersFromApi) => {
             setUsers(usersFromApi.data.users)
         })
+        .catch((err) => {
+            setError({err});
+        })
     }, []);
 
+    if (error) {
+        return <ErrorComponent status={error.err.response.status} message={error.err.response.data.msg}/>
+    }
+    
     return (
 
         <>

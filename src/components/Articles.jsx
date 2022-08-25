@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams, Link, useSearchParams } from "react-router-dom"
 import { fetchArticles, fetchArticlesByTopic } from "../api functions/api"
+import ErrorComponent from "./ErrorComponent"
 
 const Articles = () => {
 
@@ -9,6 +10,7 @@ const Articles = () => {
     const [searchParams, setSearchParams] = useSearchParams({})
     const [sortby, setSortby] = useState('created_at')
     const [order, setOrder] = useState('desc')
+    const [error, setError] = useState(null);
 
     
     
@@ -16,13 +18,21 @@ const Articles = () => {
         let sorted = searchParams.get('sortby')
         let ordered = searchParams.get('order')
         if (!topic_id) {
-            fetchArticles(sorted, ordered).then((articlesFromApi) => {
+            fetchArticles(sorted, ordered)
+            .then((articlesFromApi) => {
                 setArticles(articlesFromApi.data.articles)
 
             })
+            .catch((err) => {
+                setError({err})
+            })
         } else {
-            fetchArticlesByTopic(topic_id).then((articlesByTopicFromApi) => {
+            fetchArticlesByTopic(topic_id)
+            .then((articlesByTopicFromApi) => {
                 setArticles(articlesByTopicFromApi.data.articles)
+            })
+            .catch((err) => {
+                setError({err})
             })
         }
     }, [topic_id, searchParams])
@@ -35,6 +45,10 @@ const Articles = () => {
     function handleOrderOnClick(e) {
         setSearchParams({sortby: sortby, order: e.target.value},{replace: true})
         setOrder(e.target.value)
+    }
+    
+    if (error) {
+        return <ErrorComponent status={error.err.response.status} message={error.err.response.data.msg}/>
     }
 
     return (
