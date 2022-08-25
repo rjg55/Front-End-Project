@@ -5,14 +5,17 @@ import { fetchArticles, fetchArticlesByTopic } from "../api functions/api"
 const Articles = () => {
 
     const [articles, setArticles] = useState([])
-    const [param, setParam] = useParams()
     const {topic_id} = useParams();
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams, setSearchParams] = useSearchParams({})
+    const [sortby, setSortby] = useState('created_at')
+    const [order, setOrder] = useState('desc')
 
-
+    let sorted = searchParams.get('sortby')
+    let ordered = searchParams.get('order')
+    
     useEffect(() => {
-    if (!topic_id) {
-            fetchArticles(searchParams).then((articlesFromApi) => {
+        if (!topic_id) {
+            fetchArticles(sorted, ordered).then((articlesFromApi) => {
                 setArticles(articlesFromApi.data.articles)
             })
         } else {
@@ -20,29 +23,27 @@ const Articles = () => {
                 setArticles(articlesByTopicFromApi.data.articles)
             })
         }
-    }, [topic_id, searchParams])
-
-    function handleClick(e) {
-        e.preventDefault();
-        let params = e.target.value;
-        setSearchParams('sortby')
-        setParam('created_at')
-        }
-
-// use axios params feature to input sortby&query into api request
-// use useSearchParams to update the URL for better UX
-// then pass on the queries in the url to the fetch request
-// update useEffect to re-render when the sorted/ordered articles come back
+    }, [topic_id, sorted, ordered])
+    
+    function handleSortOnClick(e) {
+        setSearchParams({sortby: e.target.value, order: order}, {replace: true})
+        setSortby(e.target.value)
+    }
+    
+    function handleOrderOnClick(e) {
+        setSearchParams({sortby: sortby, order: e.target.value}, {replace: true})
+        setOrder(e.target.value)
+    }
 
     return (
         <>
         <section className="articles--sort">
             <p className="articles--sort--title">Sort by:</p>
-            <button onClick={handleClick} className="articles--sort--date" value='created_at'>Date</button>
-            <button className="articles--sort--comments">Comments</button>
-            <button className="articles--sort--votes">Votes</button>
-            <button onClick={handleClick}className="articles--sort--asc" value='asc'>ASC</button>
-            <button className="articles--sort--desc">DESC</button>
+            <button onClick={handleSortOnClick} className="articles--sort--date" value='created_at'>Date</button>
+            <button onClick={handleSortOnClick}className="articles--sort--comments" value='comment_count'>Comments</button>
+            <button onClick={handleSortOnClick} className="articles--sort--votes" value='votes'>Votes</button>
+            <button onClick={handleOrderOnClick} className="articles--sort--asc" value='asc'>ASC</button>
+            <button onClick={handleOrderOnClick} className="articles--sort--desc" value='desc'>DESC</button>
         </section>
         <section>
             <ul className="articles--card_list">
