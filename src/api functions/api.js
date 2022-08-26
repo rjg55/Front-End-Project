@@ -24,9 +24,11 @@ export const fetchTopics = () => {
   });
 };
 
-export const fetchArticlesByTopic = (topic) => {
+export const fetchArticlesByTopic = (sortby, order, topic) => {
   return axios
-    .get(`https://wtan.herokuapp.com/api/articles?topic=${topic}`)
+    .get(`https://wtan.herokuapp.com/api/articles?topic=${topic}`, {
+      params: { sortby, order },
+    })
     .then((res) => {
       return res;
     });
