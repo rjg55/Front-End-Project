@@ -27,7 +27,9 @@ const Articles = () => {
                 setError({err})
             })
         } else {
-            fetchArticlesByTopic(topic_id)
+            let sorted = searchParams.get('sortby')
+            let ordered = searchParams.get('order')
+            fetchArticlesByTopic(sorted, ordered, topic_id)
             .then((articlesByTopicFromApi) => {
                 setArticles(articlesByTopicFromApi.data.articles)
             })

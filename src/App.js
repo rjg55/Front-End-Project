@@ -39,7 +39,6 @@ function App() {
             <Route path="/topics/:topic_id" element={<Articles />} />
             <Route path="/articles/:article_id" element={<ArticleSingle />} />
             <Route path="/users" element={<ChangeUser />} />
-            <Route path="/articles?:query" element={<Home />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
