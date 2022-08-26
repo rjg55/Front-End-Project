@@ -7,7 +7,7 @@ const Title = () => {
     
     return (
         <div className="title--body">
-            <h1 className="title--title">W.T.A.N.</h1>
+            <h1 className="title--title">What the actual news</h1>
             <p className="title--username">{`Hello, ${loggedInUser.username}!`}</p>
         </div>
     )
