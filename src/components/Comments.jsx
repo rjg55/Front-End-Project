@@ -38,7 +38,7 @@ const Comments = ({article_id}) => {
             setRefreshComments(false)
             setIsLoading(false)
         })
-    }, [refreshComments, isLoading])
+    }, [refreshComments, isLoading, article_id])
 
     const commentsArr = comments.map((comment) => {
         return (

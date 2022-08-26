@@ -23,7 +23,7 @@ const ArticleSingle = () => {
         .catch((err) => {
             setError({err})
         })
-    }, [optimisticVotes])
+    }, [optimisticVotes, article_id])
 
     function increaseVotes(article_id, vote_delta, e) {
         e.preventDefault();
