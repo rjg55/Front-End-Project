@@ -10,10 +10,14 @@
     "created_at comments"
     "votes button";
     list-style-type: none;
-    border: 2px black solid;
+    border: 3px solid #507a8d;
+    border-radius: 5px 50px 50px 5px;
+    background-color: #adcad6;
     margin-bottom: 5px;
     margin-left: 2px;
     margin-right: 2px;
+    padding-left: 0.25%;
+    padding-right: 0.25%;
 
 }
 
@@ -56,3 +60,20 @@
 .article--card--button {
     grid-area: button;
 }
+
+@media screen and (min-width: 600px) {
+    .articles--card_list {
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .article--card {
+        width: 400px;
+        height: 200px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .articles--card_list {
+      font-size: small;
+    }
+  }

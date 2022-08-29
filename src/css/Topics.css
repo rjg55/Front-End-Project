@@ -2,8 +2,8 @@
     padding-left: 10px;
     padding-right: 10px;
     display: flex;
-        flex-flow: row wrap;
-        justify-content:centre;
+    flex-flow: row wrap;
+    justify-content: center;
 }
 
 .topics--card {
@@ -11,10 +11,11 @@
     text-align: center;
     width: 300px;
     height: 100px;
-    padding: 1px;
+    padding: 10px;
     box-sizing: border-box;
-    border: 2px black solid;
-    border-radius: 15px 50px 30px;
+    border: 3px solid #507a8d;
+    border-radius: 5px 50px 50px 5px;
+    background-color: #adcad6;
 }
 
 .topics--location_header {

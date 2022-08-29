@@ -1,11 +1,6 @@
 .App {
-  /* background-color: #001524; */
+  background-color: #006E90;
   height: 100%;
-  /* color: #FFECD1; */
+  color: #000000;
 }
 
-@media screen and (max-width: 300px) {
-  .articles--card_list {
-    font-size: small;
-  }
-}

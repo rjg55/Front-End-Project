@@ -2,6 +2,9 @@
     display: flex;
     flex-flow: column wrap;
     padding: 5%;
+    border: 3px solid #507a8d;
+    border-radius: 5px 50px 50px 5px;
+    background-color: #adcad6;
 }
 
 .article--votes {

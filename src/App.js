@@ -7,6 +7,7 @@ import "./css/Title.css";
 import "./css/ArticleSingle.css";
 import "./css/ChangeUser.css";
 import "./css/Comments.css";
+import "./css/Nav.css";
 import Articles from "./components/Articles";
 import Home from "./components/Home";
 import Nav from "./components/Nav";
