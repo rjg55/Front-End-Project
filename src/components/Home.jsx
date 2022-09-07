@@ -38,9 +38,9 @@ const Home = () => {
                     )
                 }
                 })}
-                </ul>
-                </section>
-                </div>
+            </ul>
+            </section>
+            </div>
         </>
     )
 }
