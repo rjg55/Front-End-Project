@@ -23,7 +23,8 @@ const Home = () => {
         <div className="home--articles_collection">
         <section className="home--article_card">
             <ul className="articles--card_list">
-                {articles.map(({article_id, title, author, topic, created_at, votes, comment_count}, index) => {
+            {// eslint-disable-next-line
+                articles.map(({article_id, title, author, topic, created_at, votes, comment_count}, index) => {
                     if (index < 6) {
                         return (
                             <li className="article--card" key={article_id}>
@@ -35,12 +36,13 @@ const Home = () => {
                             <h3 className="article--card--comments"> Comments: {comment_count}</h3>
                             <Link to={`/articles/${article_id}`}><button className="article--card--button">View</button></Link>
                         </li>
-                    )
+                            )
                 }
-                })}
+                }
+                )}
             </ul>
-            </section>
-            </div>
+        </section>       
+        </div>
         </>
     )
 }
