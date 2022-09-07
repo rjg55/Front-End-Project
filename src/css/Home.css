@@ -1,7 +1,5 @@
-.home--articles_collection {
-    border: 2px blue solid;
-}
-
-.home--article_card {
-    border: 2px red solid;
+.home--intro {
+    border: 3px solid #507a8d;
+    border-radius: 5px 50px 50px 5px;
+    background-color: #adcad6;
 }
