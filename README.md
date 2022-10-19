@@ -1,4 +1,4 @@
-# What The Actual News - An NC Project
+# What The Actual News
 
 Link to deployed version: https://wtan.netlify.app/
 
