@@ -12,7 +12,7 @@ The app is built on a react.js interface for the front end that makes use of com
 
 # Links
 
-Back-end repo: https://wtan.herokuapp.com/api/
+Back-end repo: https://wtan.cyclic.app/api
 
 Hosted on heroku postgres DB.
 
